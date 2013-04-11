@@ -5,8 +5,8 @@ import (
 	"github.com/joeljunstrom/go-luhn"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
-  "os"
 )
 
 const (
@@ -79,10 +79,10 @@ func main() {
 	http.HandleFunc("/validate", validationHandler)
 	http.HandleFunc("/generate", generationHandler)
 
-  port := os.Getenv("PORT")
-  if len(port) == 0 {
-    port = "8000"
-  }
+	port := os.Getenv("PORT")
+	if len(port) == 0 {
+		port = "8000"
+	}
 
 	err := http.ListenAndServe(":"+port, nil)
 	if err != nil {
